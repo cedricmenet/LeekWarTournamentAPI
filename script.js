@@ -17,7 +17,7 @@ function createLeek(leek){ // leek id
 	m_leek['pm'] = getTotalMP(leek); //Point mouvement
 	m_leek['weapon'] = getWeapon(leek);
 	m_leek['cell'] = getCell(leek);
-	m_leek["chips"] =  getChips(leek["id"]);
+	m_leek["chips"] =  getChips(leek);
 	m_leek["actions"] = [];
 	return m_leek;
 }
@@ -57,12 +57,12 @@ NB_RANDOM = 6;
 function genSet(leek){
 	debug(leek);
 	var AC_taken = [];
-	
-	
+
+
 	var initialTP = leek["pt"];
 	var initialMP = leek['pm'];
 	for(var i = 0 ; i < NB_RANDOM;i++){
-	
+
 		var tmpAction = randInt(0, count(leek["actions"]));
 		if(initialTP - leek["actions"][tmpAction]["costTp"] >= 0 &&
 		initialMP - leek["actions"][tmpAction]["costPm"] >= 0){
@@ -71,11 +71,11 @@ function genSet(leek){
 			initialMP -= leek["actions"][tmpAction]["costPm"];
 		}
 	}
-	
+
 	for (var i = 0; i < count(AC_taken); i++) {
 		debug(leek["actions"][AC_taken[i]]["name"]);
 	}
-	
+
 }
 
 for (var i = 0; i < SET_SIZE; i++) {
@@ -83,10 +83,3 @@ for (var i = 0; i < SET_SIZE; i++) {
 }
 
 debug(getOperations());
-
-
-
-
-
-
-
