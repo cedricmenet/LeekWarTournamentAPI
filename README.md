@@ -1,1 +1,1 @@
-# LeekWarTournamentAPI
+# LeekWarsTournamentAPI
