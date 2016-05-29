@@ -8,202 +8,202 @@ var API_cells_Y = [0,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15,-16,-17,
 //getCellContent
 //getCellDistance
 function getCellDistance(cell1,cell2){
-   return Math.sqrt(
-   Math.pow(Math.abs(getCellY(cell1)-getCellY(cell2)),2)+
-   Math.pow(Math.abs(getCellX(cell1)-getCellX(cell2)),2));
-}
-if(API_test){
-console.log("getCellDistance");
-console.log(getCellDistance(0,54));
-}
+  return Math.sqrt(
+    Math.pow(Math.abs(getCellY(cell1)-getCellY(cell2)),2)+
+    Math.pow(Math.abs(getCellX(cell1)-getCellX(cell2)),2));
+  }
+  if(API_test){
+    console.log("getCellDistance");
+    console.log(getCellDistance(0,54));
+  }
 
-//getCellFromXY
-function getCellFromXY(x,y){
-   if( x in API_cells)
-      if( y in API_cells[x])
-         return API_cells[x][y]
-   return null;
-}
-//getCellX
-function getCellX(cell){
-   if (cell in API_cells_X)
-      return API_cells_X[cell];
-   return null;
-}
+  //getCellFromXY
+  function getCellFromXY(x,y){
+    if( x in API_cells)
+    if( y in API_cells[x])
+    return API_cells[x][y]
+    return null;
+  }
+  //getCellX
+  function getCellX(cell){
+    if (cell in API_cells_X)
+    return API_cells_X[cell];
+    return null;
+  }
 
-//getCellY
-function getCellY(cell){
-   return API_cells_Y[cell];
-}
+  //getCellY
+  function getCellY(cell){
+    return API_cells_Y[cell];
+  }
 
-//getDistance
-function getDistance(cell1,cell2){
-   return abs(getCellY(cell1)-getCellY(cell2))+abs(getCellX(cell1)-getCellX(cell2));
-}
+  //getDistance
+  function getDistance(cell1,cell2){
+    return abs(getCellY(cell1)-getCellY(cell2))+abs(getCellX(cell1)-getCellX(cell2));
+  }
 
-//getLeekOnCell
-function getLeekOnCell(cell){
-   for(var i = 0; i < API_leeks;i++)
-      if(getCell(i) == cell)
-         return i;
-   return -1;
-}
-//getMapType
-function getMapType(){
-   return "irrelevent";
-}
+  //getLeekOnCell
+  function getLeekOnCell(cell){
+    for(var i = 0; i < API_leeks;i++)
+    if(getCell(i) == cell)
+    return i;
+    return -1;
+  }
+  //getMapType
+  function getMapType(){
+    return "irrelevent";
+  }
 
-//getObstacles
-function getObstacles(){
-return [6, 23, 24, 27, 29, 34, 35, 41, 44, 45, 46, 47, 51, 52, 53, 62, 64, 69, 75, 107, 108, 115, 124, 125, 126, 141, 142, 143, 146, 155, 159, 167, 172, 173, 177, 184, 185, 188, 190, 192, 202, 209, 230, 245, 247, 259, 264, 265, 282, 295, 320, 336, 337, 338, 347, 350, 355, 364, 365, 366, 371, 372, 382, 383, 389, 390, 407, 412, 428, 429, 430, 435, 447, 449, 452, 453, 466, 467, 470, 474, 476, 484, 501, 506, 523, 524, 527, 541, 544, 545, 562, 570, 602, 605, 610];
-}
+  //getObstacles
+  function getObstacles(){
+    return [6, 23, 24, 27, 29, 34, 35, 41, 44, 45, 46, 47, 51, 52, 53, 62, 64, 69, 75, 107, 108, 115, 124, 125, 126, 141, 142, 143, 146, 155, 159, 167, 172, 173, 177, 184, 185, 188, 190, 192, 202, 209, 230, 245, 247, 259, 264, 265, 282, 295, 320, 336, 337, 338, 347, 350, 355, 364, 365, 366, 371, 372, 382, 383, 389, 390, 407, 412, 428, 429, 430, 435, 447, 449, 452, 453, 466, 467, 470, 474, 476, 484, 501, 506, 523, 524, 527, 541, 544, 545, 562, 570, 602, 605, 610];
+  }
 
-//getPath
-function getPath(cell1,cell2){
-   return dijkstra(cell1,cell2);
-}
+  //getPath
+  function getPath(cell1,cell2){
+    return dijkstra(cell1,cell2);
+  }
 
-function dijkstra(cell1,cell2){
-   var prev = [];
-   var toVisit = new Set();
-   toVisit.add(cell1);
+  function dijkstra(cell1,cell2){
+    var prev = [];
+    var toVisit = new Set();
+    toVisit.add(cell1);
 
-   var currentSet;
-   var x;
-   var y;
+    var currentSet;
+    var x;
+    var y;
 
 
-   while( !(cell2 in  prev) && toVisit.size != 0)
-   {
+    while( !(cell2 in  prev) && toVisit.size != 0)
+    {
       currentSet = toVisit;
       toVisit = new Set();
       for (let cell of currentSet){
-         x = getCellX(cell);
-         y = getCellY(cell);
+        x = getCellX(cell);
+        y = getCellY(cell);
 
-         {
-            var ctmp = getCellFromXY(x+1,y);
-            if(!isObstacle(ctmp) && !toVisit.has(ctmp) && !(ctmp in prev)){
-               toVisit.add(ctmp);
-               prev[ctmp] = cell;
-            }
-         }
-         {
-            var ctmp = getCellFromXY(x-1,y);
-            if(!isObstacle(ctmp) && !toVisit.has(ctmp) && !(ctmp in prev) ){
-               toVisit.add(ctmp);
-               prev[ctmp] = cell;
-            }
-         }
-         {
-            var ctmp = getCellFromXY(x,y+1);
-            if(!isObstacle(ctmp) && !toVisit.has(ctmp) &&!(ctmp in prev)){
-               toVisit.add(ctmp);
-               prev[ctmp] = cell;
-            }
-         }
-         {
-            var ctmp = getCellFromXY(x,y-1);
-            if(!isObstacle(ctmp) && !toVisit.has(ctmp) && !(ctmp in prev) ){
-               toVisit.add(ctmp);
-               prev[ctmp] = cell;
-            }
-         }
+        {
+          var ctmp = getCellFromXY(x+1,y);
+          if(!isObstacle(ctmp) && !toVisit.has(ctmp) && !(ctmp in prev)){
+            toVisit.add(ctmp);
+            prev[ctmp] = cell;
+          }
+        }
+        {
+          var ctmp = getCellFromXY(x-1,y);
+          if(!isObstacle(ctmp) && !toVisit.has(ctmp) && !(ctmp in prev) ){
+            toVisit.add(ctmp);
+            prev[ctmp] = cell;
+          }
+        }
+        {
+          var ctmp = getCellFromXY(x,y+1);
+          if(!isObstacle(ctmp) && !toVisit.has(ctmp) &&!(ctmp in prev)){
+            toVisit.add(ctmp);
+            prev[ctmp] = cell;
+          }
+        }
+        {
+          var ctmp = getCellFromXY(x,y-1);
+          if(!isObstacle(ctmp) && !toVisit.has(ctmp) && !(ctmp in prev) ){
+            toVisit.add(ctmp);
+            prev[ctmp] = cell;
+          }
+        }
 
       }
-   }
+    }
 
-   result = [cell2];
-   var current_cell = cell2;
-   while(current_cell != cell1){
+    result = [cell2];
+    var current_cell = cell2;
+    while(current_cell != cell1){
       result.push(prev[current_cell]);
       current_cell = prev[current_cell];
-   }
-   return result;
+    }
+    return result;
 
 
-}
+  }
 
-if(API_test){
-console.log(dijkstra(0,612));
-console.log(getObstacles());
-console.log(getPathLength(0,612));
+  if(API_test){
+    console.log(dijkstra(0,612));
+    console.log(getObstacles());
+    console.log(getPathLength(0,612));
 
-}
-//getPathLength
-function getPathLength(cell1,cell2){
-   return count(getPath(cell1,cell2));
-}
-//isEmptyCell
-function isEmptyCell(cell){
-   if(!isLeek(cell) && !isObstacle(cell))
-      return true;
-   return false;
-}
+  }
+  //getPathLength
+  function getPathLength(cell1,cell2){
+    return count(getPath(cell1,cell2));
+  }
+  //isEmptyCell
+  function isEmptyCell(cell){
+    if(!isLeek(cell) && !isObstacle(cell))
+    return true;
+    return false;
+  }
 
 
-//isLeek
-function isLeek(cell){
-   for(var i = 0; i < API_leeks;i++)
-      if(getCell(i) == cell)
-         return true;
-   return false;
-}
+  //isLeek
+  function isLeek(cell){
+    for(var i = 0; i < API_leeks;i++)
+    if(getCell(i) == cell)
+    return true;
+    return false;
+  }
 
-//isObstacle
-function isObstacle(cell){
-   if (getObstacles().indexOf(cell) != -1)
-      return true;
-   return false;
-}
-//isOnSameLine
-function isOnSameLine(cell1,cell2){
-   if(getCellY(cell1) == getCellY(cell2))
-      return true;
-   if(getCellX(cell1) == getCellX(cell2))
-      return true;
+  //isObstacle
+  function isObstacle(cell){
+    if (getObstacles().indexOf(cell) != -1)
+    return true;
+    return false;
+  }
+  //isOnSameLine
+  function isOnSameLine(cell1,cell2){
+    if(getCellY(cell1) == getCellY(cell2))
+    return true;
+    if(getCellX(cell1) == getCellX(cell2))
+    return true;
 
-   return false;
-}
+    return false;
+  }
 
-if(API_test){
-var arr= [1,2,3,4];
-console.log(count(arr));
-}
+  if(API_test){
+    var arr= [1,2,3,4];
+    console.log(count(arr));
+  }
 
-function los(map, x1, y1, x2, y2) {
+  function los(map, x1, y1, x2, y2) {
 
-		var a = Math.abs(y1 - y2);
-		var b = Math.abs(x1 - x2);
-		var dx = x1 > x2 ? -1 : 1;
-		var dy = y1 < y2 ? 1 : -1;
-		var path = [];
+    var a = Math.abs(y1 - y2);
+    var b = Math.abs(x1 - x2);
+    var dx = x1 > x2 ? -1 : 1;
+    var dy = y1 < y2 ? 1 : -1;
+    var path = [];
 
-		if (b == 0) {
-			path.push(0, a + 1);
-		} else {
-			var d = a / b / 2;
-			var h = 0
-			for (var i = 0; i < b; ++i) {
-				var y = 0.5 + (i * 2 + 1) * d;
-				var ry = Math.ceil(y)
-				if (ry == y) {
-					path.push(h, y - h);
-					h = y
-				} else {
-					path.push(h, ry - h);
-					h = ry - 1
-				}
-			}
-			path.push(h, a + 1 - h);
-		}
-		for (var p = 0; p < path.length; p += 2) {
-			for (var i = 0; i < path[p + 1]; ++i) {
-				//if (map[y1 + (path[p] + i) * dy][x1 + (p / 2) * dx] == 1) {
-               if(isObstacle(getCellFromXY(x1 + (p / 2) * dx,y1 + (path[p] + i) * dy))){
-					return false;
-				}
-			}
-		}
-		return true;
-}
+    if (b == 0) {
+      path.push(0, a + 1);
+    } else {
+      var d = a / b / 2;
+      var h = 0
+      for (var i = 0; i < b; ++i) {
+        var y = 0.5 + (i * 2 + 1) * d;
+        var ry = Math.ceil(y)
+        if (ry == y) {
+          path.push(h, y - h);
+          h = y
+        } else {
+          path.push(h, ry - h);
+          h = ry - 1
+        }
+      }
+      path.push(h, a + 1 - h);
+    }
+    for (var p = 0; p < path.length; p += 2) {
+      for (var i = 0; i < path[p + 1]; ++i) {
+        //if (map[y1 + (path[p] + i) * dy][x1 + (p / 2) * dx] == 1) {
+        if(isObstacle(getCellFromXY(x1 + (p / 2) * dx,y1 + (path[p] + i) * dy))){
+          return false;
+        }
+      }
+    }
+    return true;
+  }

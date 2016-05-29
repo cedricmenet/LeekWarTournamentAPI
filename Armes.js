@@ -1,91 +1,100 @@
 /*********************************** WEAPON ***********************************/
-//WEAPON
-WEAPON_AXE = 109
-WEAPON_B_LASER = 60
-WEAPON_BROADSWORD = 108
-WEAPON_DESTROYER = 40
-WEAPON_DOUBLE_GUN = 39
-WEAPON_ELECTRISOR = 44
-WEAPON_FLAME_THROWER = 46
-WEAPON_GAZOR = 48
-WEAPON_GRENADE_LAUNCHER = 43
-WEAPON_KATANA = 107
-WEAPON_LASER = 42
-WEAPON_MACHINE_GUN = 38
-WEAPON_MAGNUM = 45
-WEAPON_M_LASER = 47
-WEAPON_PISTOL = 37
-WEAPON_SHOTGUN = 41
 
 
+AREA_POINT = 0;
+AREA_LASER_LINE = 1;
+AREA_CIRCLE_1 = 3;
+AREA_CIRCLE_2 = 5;
+AREA_CIRCLE_3 = 7;
 
-CHIP_ACCELERATION = 91
-CHIP_ADRENALINE = 16
-CHIP_ANTIDOTE = 110
-CHIP_ARMOR = 22
-CHIP_ARMORING = 67
-CHIP_BALL_AND_CHAIN = 93
-CHIP_BANDAGE = 3
-CHIP_BARK = 104
-CHIP_BURNING = 105
-CHIP_CARAPACE = 81
-CHIP_COLLAR = 103
-CHIP_CURE = 4
-CHIP_DEVIL_STRIKE = 85
-CHIP_DOPING = 26
-CHIP_DRIP = 10
-CHIP_FEROCITY = 102
-CHIP_FERTILIZER = 90
-CHIP_FIRE_BULB = 74
-CHIP_FLAME = 5
-CHIP_FLASH = 6
-CHIP_FORTRESS = 29
-CHIP_FRACTURE = 106
-CHIP_HEALER_BULB = 75
-CHIP_HELMET = 21
-CHIP_ICE = 2
-CHIP_ICEBERG = 31
-CHIP_ICED_BULB = 77
-CHIP_INVERSION = 68
-CHIP_LEATHER_BOOTS = 14
-CHIP_LIBERATION = 34
-CHIP_LIGHTNING = 33
-CHIP_LIGHTNING_BULB = 78
-CHIP_LOAM = 89
-CHIP_METALLIC_BULB = 79
-CHIP_METEORITE = 36
-CHIP_MIRROR = 101
-CHIP_MOTIVATION = 15
-CHIP_PEBBLE = 19
-CHIP_PLAGUE = 99
-CHIP_PROTEIN = 8
-CHIP_PUNY_BULB = 73
-CHIP_RAGE = 17
-CHIP_RAMPART = 24
-CHIP_REFLEXES = 28
-CHIP_REGENERATION = 35
-CHIP_REMISSION = 80
-CHIP_RESURRECTION = 84
-CHIP_ROCK = 7
-CHIP_ROCKFALL = 32
-CHIP_ROCKY_BULB = 76
-CHIP_SEVEN_LEAGUE_BOOTS = 13
-CHIP_SHIELD = 20
-CHIP_SHOCK = 1
-CHIP_SLOW_DOWN = 92
-CHIP_SOLIDIFICATION = 96
-CHIP_SOPORIFIC = 95
-CHIP_SPARK = 18
-CHIP_STALACTITE = 30
-CHIP_STEROID = 25
-CHIP_STRETCHING = 9
-CHIP_TELEPORTATION = 59
-CHIP_THORN = 100
-CHIP_TOXIN = 98
-CHIP_TRANQUILIZER = 94
-CHIP_VACCINE = 11
-CHIP_VENOM = 97
-CHIP_WALL = 23
-CHIP_WARM_UP = 27
-CHIP_WHIP = 88
-CHIP_WINGED_BOOTS = 12
+
+// name maxRange minRange
+
+
+//canUseWeapon
+function canUseWeapon()
+{
+
+}
+//canUseWeaponOnCell
+function canUseWeaponOnCell()
+{
+
+}
+//getWeaponArea
+function getWeaponArea(weapon)
+{
+  return weapons_api[weapon]['radius'];
+}
+//getWeaponCost
+function getWeaponCost(weapon)
+{
+  return weapons_api[weapon]["cost"];
+}
+//getWeaponEffectiveArea
+function getWeaponEffectiveArea(weapon,cell)
+{
+
+}
+//getWeaponEffects
+function getWeaponEffects()
+{
+
+}
+//getWeaponFailure
+/*function getWeaponFailure()
+{
+
+}*/
+//getWeaponMaxRange
+function getWeaponMaxRange(weapon)
+{
+  return weapons_api[weapon]["scope"]["max"];
+}
+//getWeaponMaxScope
+function getWeaponMaxScope()
+{
+  return weapons_api[weapon]["scope"]["max"];
+}
+//getWeaponMinRange
+function getWeaponMinRange()
+{
+  return weapons_api[weapon]["scope"]["min"];
+}
+//getWeaponMinScope
+function getWeaponMinScope()
+{
+  return weapons_api[weapon]["scope"]["min"];
+}
+//getWeaponName
+function getWeaponName()
+{
+  return weapons_api[weapon]["name"];
+}
+//isInlineWeapon
+function isInlineWeapon(weapon)
+{
+  return weapons_api[weapon]["scope"]["inline"];
+}
+//isWeapon
+function isWeapon(weapon)
+{
+  if(weapons_api[weapon] != null)
+    return true;
+  return false;
+}
+//useWeapon
+function useWeapon()
+{
+
+}
+//useWeaponOnCell
+function useWeaponOnCell()
+{
+
+}
+//weaponNeedLos
+function weaponNeedLos()
+{
+  return weapons_api[weapon]["scope"]["los"];
+}

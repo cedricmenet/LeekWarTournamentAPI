@@ -110,6 +110,3 @@ function toDegrees (number){
 function toRadians (number){
   return Math.toRadians(number);
 }
-
-if(Debugging)
-console.log(abs(5.3));
