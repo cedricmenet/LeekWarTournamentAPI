@@ -10,16 +10,29 @@ AREA_CIRCLE_3 = 7;
 
 // name maxRange minRange
 
+function log(){
+  console.log(_TEST);
+}
 
 //canUseWeapon
-function canUseWeapon()
+function canUseWeapon(weapon,leek)
 {
-
+  var cell_leek = getCell(leek);
+  return canUseWeaponOnCell(weapon,cell_leek)
 }
 //canUseWeaponOnCell
-function canUseWeaponOnCell()
+function canUseWeaponOnCell(weapon,cell_target)
 {
-
+    var cell =  getCell();
+    var g = create_filter(getWeaponMinRange(weapon),getWeaponMaxRange(weapon));
+    var t = LosFilter(cell,getWeaponMaxRange(weapon));
+    var f = apply_filter(t,g);
+    var r = cells_from_filter(f,getCellX(cell),getCellY(cell));
+    console.log(''+cell + getCellX(cell) + getCellY(cell));
+    console.log(r);
+    if (r.indexOf(cell_target) != -1)
+      return true;
+    return false;
 }
 //getWeaponArea
 function getWeaponArea(weapon)
@@ -52,17 +65,17 @@ function getWeaponMaxRange(weapon)
   return weapons_api[weapon]["scope"]["max"];
 }
 //getWeaponMaxScope
-function getWeaponMaxScope()
+function getWeaponMaxScope(weapon)
 {
   return weapons_api[weapon]["scope"]["max"];
 }
 //getWeaponMinRange
-function getWeaponMinRange()
+function getWeaponMinRange(weapon)
 {
-  return weapons_api[weapon]["scope"]["min"];
+  return weapons_api[''+weapon]["scope"]["min"];
 }
 //getWeaponMinScope
-function getWeaponMinScope()
+function getWeaponMinScope(weapon)
 {
   return weapons_api[weapon]["scope"]["min"];
 }
@@ -84,9 +97,11 @@ function isWeapon(weapon)
   return false;
 }
 //useWeapon
-function useWeapon()
+function useWeapon(leek)
 {
+  if(canUseWeapon(getWeapon(),leek)){
 
+  }
 }
 //useWeaponOnCell
 function useWeaponOnCell()

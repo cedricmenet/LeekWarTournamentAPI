@@ -1,7 +1,7 @@
 //--------------------------------
 //------- Code de base -----------
 //--------------------------------
-
+/*
 var myleek = createLeek(getLeek());
 debug(myleek);
 
@@ -83,3 +83,4 @@ for (var i = 0; i < SET_SIZE; i++) {
 }
 
 debug(getOperations());
+*/

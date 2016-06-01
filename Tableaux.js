@@ -1,6 +1,6 @@
 /*********************************** Tableaux api***********************************/
 
-arrayConcat
+/*arrayConcat
 arrayFilter
 arrayFlatten
 arrayFoldLeft
@@ -13,16 +13,21 @@ arrayPartition
 arraySort
 assocSort
 average
-count
-fill
+*/
+function count(arr){
+  return arr.length;
+}
+/*fill
 inArray
 insert
 isEmpty
 join
 keySort
-pop
-push
-pushAll
+pop*/
+function push(arr,value){
+  arr.push(value);
+}
+/*pushAll
 remove
 removeElement
 removeKey
@@ -33,4 +38,4 @@ shuffle
 sort
 subArray
 sum
-unshift
+unshift*/

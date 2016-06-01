@@ -17,7 +17,7 @@ WEAPON_PISTOL = 37;
 WEAPON_SHOTGUN = 41;
 
 
-var weapons_api = { WEAPON_PISTOL:
+var weapons_api = { "37" :
   {
     'name': 'Pistolet',
     'cooldown': 0,
